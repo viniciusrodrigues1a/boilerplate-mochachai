@@ -64,8 +64,14 @@ suite("Functional Tests", function () {
 });
 
 const Browser = require("zombie");
+Browser.site = 'https://testing-with-chai.herokuapp.com/';
+
+const browser = new Browser();
 
 suite("Functional Tests with Zombie.js", function () {
+  suiteSetup(function(done) {
+    return browser.visit('/', done);
+  });
 
   suite('"Famous Italian Explorers" form', function () {
     // #5
